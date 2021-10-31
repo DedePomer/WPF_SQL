@@ -1,0 +1,48 @@
+﻿<Page x:Class="WPF_SQL.Reg"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF_SQL"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Reg">
+
+    <Grid HorizontalAlignment="Center" Width="200">
+        <StackPanel>
+            <TextBlock Text="Регистрация" FontSize="20" FontFamily="Times New Roman" FontStyle="Italic" HorizontalAlignment="Center"/>
+            <Border BorderBrush="Azure" BorderThickness="2" CornerRadius="5" Padding="10,0,10,5">
+                <StackPanel>
+                    <TextBlock Text="Введите фамилию"/>
+                    <TextBox Name="TBOXSurname" ></TextBox>
+                    <Label Name="Lsurname" Visibility="Collapsed" Foreground="Red" Content="Данные не введены" Style="{StaticResource Slabelerror}"/>
+
+                    <TextBlock Text="Введите имя"/>
+                    <TextBox Name="TBOXname"></TextBox>
+                    <Label Name="Lname" Visibility="Collapsed" Foreground="Red" Content="Данные не введены" Style="{StaticResource Slabelerror}"/>
+
+                    <TextBlock Text="Введите отчество"/>
+                    <TextBox Name="TBOXsecondname"></TextBox>
+                    <Label Name="Lsecname" Visibility="Collapsed" Foreground="Red" Content="Данные не введены" Style="{StaticResource Slabelerror}"/>
+
+                    <TextBlock Text="Выберите пол"/>
+                    <ComboBox Name="CBgender"></ComboBox>
+                    
+                    <TextBlock Text="Введите логин"/>
+                    <TextBox Name="TBOXlogin" ></TextBox>
+                    <Label Name="Llogin" Visibility="Collapsed" Foreground="Red" Content="Данные не введены" Style="{StaticResource Slabelerror}"/>
+
+                    <TextBlock Text="Введите пароль"/>
+                    <PasswordBox Name="PBOXpassword" KeyUp="PBOXpassword_KeyDown"  LostMouseCapture="PBOXpassword_LostMouseCapture">
+                    </PasswordBox>
+                    <Label Name="Lpass" Visibility="Collapsed" Foreground="Red" Content=" " Style="{StaticResource Slabelerror}"/>
+                    <Popup Name="popup" StaysOpen="False" HorizontalOffset="30" VerticalOffset="190"  MaxWidth="180" Placement="Right"  ToolTipService.PlacementTarget="{Binding ElementName=PBOXpassword}">
+                        <TextBlock Name="TBLOCKpopup" FontSize="10" TextWrapping="Wrap" Background="AliceBlue" Opacity="1" ></TextBlock>
+                    </Popup>
+                </StackPanel>
+            </Border>
+            <Button Name="Breg" Content="Зарегистрироваться" Margin="0,10,0,10" Click="Breg_Click"/>
+            <Label Name="Lback" Style="{StaticResource Slableback}" Content="Вернуться обратно" MouseLeftButtonUp ="Lback_MouseLeftButtonUp" />
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clothes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Clotges" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Colors">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Colors" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="id_material" />
+          </Key>
+          <Property Name="id_material" Type="int" Nullable="false" />
+          <Property Name="material" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="id_servise" />
+          </Key>
+          <Property Name="id_servise" Type="int" Nullable="false" />
+          <Property Name="Servise" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMaterial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_user" Type="int" Nullable="false" />
+          <Property Name="id_material" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Secondname" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="int" Nullable="false" />
+          <Property Name="id_role" Type="int" Nullable="false" />
+          <Property Name="id_gender" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersService">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_users" Type="int" Nullable="false" />
+          <Property Name="id_service" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Washhouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Secondname" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Date of receiving" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="id_clothes" Type="int" Nullable="false" />
+          <Property Name="id_colors" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UserMaterial_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="1" />
+          <End Role="UserMaterial" Type="Self.UserMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="id_material" />
+            </Principal>
+            <Dependent Role="UserMaterial">
+              <PropertyRef Name="id_material" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMaterial_Washhouse">
+          <End Role="Washhouse" Type="Self.Washhouse" Multiplicity="1" />
+          <End Role="UserMaterial" Type="Self.UserMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Washhouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserMaterial">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersService_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="UsersService" Type="Self.UsersService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="id_servise" />
+            </Principal>
+            <Dependent Role="UsersService">
+              <PropertyRef Name="id_service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersService_Washhouse">
+          <End Role="Washhouse" Type="Self.Washhouse" Multiplicity="1" />
+          <End Role="UsersService" Type="Self.UsersService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Washhouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UsersService">
+              <PropertyRef Name="id_users" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Washhouse_Clothes">
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="1" />
+          <End Role="Washhouse" Type="Self.Washhouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clothes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Washhouse">
+              <PropertyRef Name="id_clothes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Washhouse_Colors">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="1" />
+          <End Role="Washhouse" Type="Self.Washhouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Washhouse">
+              <PropertyRef Name="id_colors" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="Clothes" EntityType="Self.Clothes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Colors" EntityType="Self.Colors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMaterial" EntityType="Self.UserMaterial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersService" EntityType="Self.UsersService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Washhouse" EntityType="Self.Washhouse" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_UserMaterial_Material" Association="Self.FK_UserMaterial_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="UserMaterial" EntitySet="UserMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMaterial_Washhouse" Association="Self.FK_UserMaterial_Washhouse">
+            <End Role="Washhouse" EntitySet="Washhouse" />
+            <End Role="UserMaterial" EntitySet="UserMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Gender" Association="Self.FK_Users_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Role" Association="Self.FK_Users_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersService_Service" Association="Self.FK_UsersService_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="UsersService" EntitySet="UsersService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersService_Washhouse" Association="Self.FK_UsersService_Washhouse">
+            <End Role="Washhouse" EntitySet="Washhouse" />
+            <End Role="UsersService" EntitySet="UsersService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Washhouse_Clothes" Association="Self.FK_Washhouse_Clothes">
+            <End Role="Clothes" EntitySet="Clothes" />
+            <End Role="Washhouse" EntitySet="Washhouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Washhouse_Colors" Association="Self.FK_Washhouse_Colors">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Washhouse" EntitySet="Washhouse" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Clothes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Clotges" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Washhouse" Relationship="Self.FK_Washhouse_Clothes" FromRole="Clothes" ToRole="Washhouse" />
+        </EntityType>
+        <EntityType Name="Colors">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Colors1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Washhouse" Relationship="Self.FK_Washhouse_Colors" FromRole="Colors" ToRole="Washhouse" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Gender1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Gender" FromRole="Gender" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="id_material" />
+          </Key>
+          <Property Name="id_material" Type="Int32" Nullable="false" />
+          <Property Name="material1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UserMaterial" Relationship="Self.FK_UserMaterial_Material" FromRole="Material" ToRole="UserMaterial" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Role1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Role" FromRole="Role" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="id_servise" />
+          </Key>
+          <Property Name="id_servise" Type="Int32" Nullable="false" />
+          <Property Name="Servise" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UsersService" Relationship="Self.FK_UsersService_Service" FromRole="Service" ToRole="UsersService" />
+        </EntityType>
+        <EntityType Name="UserMaterial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <Property Name="id_material" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Material" Relationship="Self.FK_UserMaterial_Material" FromRole="UserMaterial" ToRole="Material" />
+          <NavigationProperty Name="Washhouse" Relationship="Self.FK_UserMaterial_Washhouse" FromRole="UserMaterial" ToRole="Washhouse" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Secondname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="Int32" Nullable="false" />
+          <Property Name="id_role" Type="Int32" Nullable="false" />
+          <Property Name="id_gender" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Users_Gender" FromRole="Users" ToRole="Gender" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Users_Role" FromRole="Users" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="UsersService">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_users" Type="Int32" Nullable="false" />
+          <Property Name="id_service" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Service" Relationship="Self.FK_UsersService_Service" FromRole="UsersService" ToRole="Service" />
+          <NavigationProperty Name="Washhouse" Relationship="Self.FK_UsersService_Washhouse" FromRole="UsersService" ToRole="Washhouse" />
+        </EntityType>
+        <EntityType Name="Washhouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Secondname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date_of_receiving" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_clothes" Type="Int32" Nullable="false" />
+          <Property Name="id_colors" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clothes" Relationship="Self.FK_Washhouse_Clothes" FromRole="Washhouse" ToRole="Clothes" />
+          <NavigationProperty Name="Colors" Relationship="Self.FK_Washhouse_Colors" FromRole="Washhouse" ToRole="Colors" />
+          <NavigationProperty Name="UserMaterial" Relationship="Self.FK_UserMaterial_Washhouse" FromRole="Washhouse" ToRole="UserMaterial" />
+          <NavigationProperty Name="UsersService" Relationship="Self.FK_UsersService_Washhouse" FromRole="Washhouse" ToRole="UsersService" />
+        </EntityType>
+        <Association Name="FK_Washhouse_Clothes">
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="1" />
+          <End Role="Washhouse" Type="Self.Washhouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clothes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Washhouse">
+              <PropertyRef Name="id_clothes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Washhouse_Colors">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="1" />
+          <End Role="Washhouse" Type="Self.Washhouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Washhouse">
+              <PropertyRef Name="id_colors" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMaterial_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="1" />
+          <End Role="UserMaterial" Type="Self.UserMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="id_material" />
+            </Principal>
+            <Dependent Role="UserMaterial">
+              <PropertyRef Name="id_material" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersService_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="UsersService" Type="Self.UsersService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="id_servise" />
+            </Principal>
+            <Dependent Role="UsersService">
+              <PropertyRef Name="id_service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMaterial_Washhouse">
+          <End Role="Washhouse" Type="Self.Washhouse" Multiplicity="1" />
+          <End Role="UserMaterial" Type="Self.UserMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Washhouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserMaterial">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersService_Washhouse">
+          <End Role="Washhouse" Type="Self.Washhouse" Multiplicity="1" />
+          <End Role="UsersService" Type="Self.UsersService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Washhouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UsersService">
+              <PropertyRef Name="id_users" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clothes" EntityType="Self.Clothes" />
+          <EntitySet Name="Colors" EntityType="Self.Colors" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="Material" EntityType="Self.Material" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Service" EntityType="Self.Service" />
+          <EntitySet Name="UserMaterial" EntityType="Self.UserMaterial" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="UsersService" EntityType="Self.UsersService" />
+          <EntitySet Name="Washhouse" EntityType="Self.Washhouse" />
+          <AssociationSet Name="FK_Washhouse_Clothes" Association="Self.FK_Washhouse_Clothes">
+            <End Role="Clothes" EntitySet="Clothes" />
+            <End Role="Washhouse" EntitySet="Washhouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Washhouse_Colors" Association="Self.FK_Washhouse_Colors">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Washhouse" EntitySet="Washhouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Gender" Association="Self.FK_Users_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMaterial_Material" Association="Self.FK_UserMaterial_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="UserMaterial" EntitySet="UserMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Role" Association="Self.FK_Users_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersService_Service" Association="Self.FK_UsersService_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="UsersService" EntitySet="UsersService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMaterial_Washhouse" Association="Self.FK_UserMaterial_Washhouse">
+            <End Role="Washhouse" EntitySet="Washhouse" />
+            <End Role="UserMaterial" EntitySet="UserMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersService_Washhouse" Association="Self.FK_UsersService_Washhouse">
+            <End Role="Washhouse" EntitySet="Washhouse" />
+            <End Role="UsersService" EntitySet="UsersService" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Clothes">
+            <EntityTypeMapping TypeName="Model.Clothes">
+              <MappingFragment StoreEntitySet="Clothes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Clotges" ColumnName="Clotges" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="Model.Colors">
+              <MappingFragment StoreEntitySet="Colors">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Colors1" ColumnName="Colors" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="Model.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Gender1" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Material">
+            <EntityTypeMapping TypeName="Model.Material">
+              <MappingFragment StoreEntitySet="Material">
+                <ScalarProperty Name="id_material" ColumnName="id_material" />
+                <ScalarProperty Name="material1" ColumnName="material" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="Model.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service">
+            <EntityTypeMapping TypeName="Model.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="id_servise" ColumnName="id_servise" />
+                <ScalarProperty Name="Servise" ColumnName="Servise" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMaterial">
+            <EntityTypeMapping TypeName="Model.UserMaterial">
+              <MappingFragment StoreEntitySet="UserMaterial">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="id_material" ColumnName="id_material" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Secondname" ColumnName="Secondname" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="id_role" ColumnName="id_role" />
+                <ScalarProperty Name="id_gender" ColumnName="id_gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersService">
+            <EntityTypeMapping TypeName="Model.UsersService">
+              <MappingFragment StoreEntitySet="UsersService">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_users" ColumnName="id_users" />
+                <ScalarProperty Name="id_service" ColumnName="id_service" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Washhouse">
+            <EntityTypeMapping TypeName="Model.Washhouse">
+              <MappingFragment StoreEntitySet="Washhouse">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Secondname" ColumnName="Secondname" />
+                <ScalarProperty Name="Date_of_receiving" ColumnName="Date of receiving" />
+                <ScalarProperty Name="id_clothes" ColumnName="id_clothes" />
+                <ScalarProperty Name="id_colors" ColumnName="id_colors" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

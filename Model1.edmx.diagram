@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="92350b2e5b96479b9107535e2b1c65a2" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Clothes" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Colors" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Gender" Width="1.5" PointX="5.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Material" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="5.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Service" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UserMaterial" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="8" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UsersService" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Washhouse" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Washhouse_Clothes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Washhouse_Colors" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Users_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_UserMaterial_Material" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Users_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_UsersService_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_UserMaterial_Washhouse" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_UsersService_Washhouse" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
