@@ -25,7 +25,7 @@ namespace WPF_SQL
             InitializeComponent();
             Const.frame = Fmain;
             Const.BD = new Entities();
-            Fmain.Navigate(new Image()); // Данные для входа в папке Пароли.txt
+            Fmain.Navigate(new Image()); // Данные для входа в файл Пароли.txt
         }
 
         private void Bsing_in_Click(object sender, RoutedEventArgs e)
