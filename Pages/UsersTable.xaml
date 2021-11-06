@@ -9,6 +9,7 @@
       Title="UsersTable">
 
     <Grid>
+        <StackPanel>
         <DataGrid Name="DGtable" AutoGenerateColumns="False" HorizontalAlignment="Center" CanUserAddRows="False"   >
             <DataGrid.Columns >
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*"/>
@@ -20,5 +21,7 @@
                 <DataGridTextColumn Header="Роль" Binding="{Binding Role.Role1}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
+            <Label Name="Lback" Style="{StaticResource Slableback}" Content="Назад" MouseLeftButtonUp ="Lback_MouseLeftButtonUp" />
+        </StackPanel>
     </Grid>
 </Page>

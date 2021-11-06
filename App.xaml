@@ -5,6 +5,12 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
+        <Style x:Key="Stblockorder" TargetType="TextBlock">
+            <Style.Setters>
+                <Setter Property="Foreground" Value="Black"/>
+            </Style.Setters>
+        </Style>
+        
         <Style x:Key="Slableback" TargetType="Label">
             <Style.Setters>
                 <Setter Property="HorizontalAlignment" Value="Center"/>

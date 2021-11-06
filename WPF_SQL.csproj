@@ -65,6 +65,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\OrderTable.xaml.cs">
+      <DependentUpon>OrderTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AdminCab.xaml.cs">
       <DependentUpon>AdminCab.xaml</DependentUpon>
     </Compile>
@@ -122,6 +125,10 @@
     <Compile Include="Washhouse.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Pages\OrderTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AdminCab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

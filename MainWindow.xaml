@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_SQL"
         mc:Ignorable="d"
-        Title="Прачечная" Height="450" Width="800">
+        Title="Прачечная" Height="450" Width="800" >
+
+    <!--<Window.Background>
+        <SolidColorBrush Opacity="0" Color="White"/>
+    </Window.Background>-->
+    
     <Grid Style="{StaticResource SmainGrid}">
+        <!--<Grid.Background  >
+            <SolidColorBrush Opacity="0" Color="White" />
+        </Grid.Background>-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>

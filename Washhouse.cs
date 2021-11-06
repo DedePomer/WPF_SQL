@@ -25,7 +25,7 @@ namespace WPF_SQL
         public string Surname { get; set; }
         public string Name { get; set; }
         public string Secondname { get; set; }
-        public string Date_of_receiving { get; set; }
+        public System.DateTime Date_of_receiving { get; set; }
         public int id_clothes { get; set; }
         public int id_colors { get; set; }
     

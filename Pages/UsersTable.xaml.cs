@@ -26,5 +26,10 @@ namespace WPF_SQL
             DGtable.ItemsSource = Const.BD.Users.ToList();
 
         }
+
+        private void Lback_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Const.frame.Navigate(new AdminCab());
+        }
     }
 }

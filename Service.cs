@@ -22,6 +22,7 @@ namespace WPF_SQL
     
         public int id_servise { get; set; }
         public string Servise { get; set; }
+        public Nullable<double> Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersService> UsersService { get; set; }

@@ -34,5 +34,10 @@ namespace WPF_SQL
         {
             Const.frame.Navigate(new UsersTable());
         }
+
+        private void Border_Click(object sender, RoutedEventArgs e)
+        {
+            Const.frame.Navigate(new OrderTable());
+        }
     }
 }
