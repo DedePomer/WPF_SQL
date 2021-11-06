@@ -63,5 +63,29 @@ namespace WPF_SQL
             else
                 tb.Text = "Ничего нет";
         }
+
+        private void TextBlock_Loaded_2(object sender, RoutedEventArgs e)
+        {
+            TextBlock tb = (TextBlock)sender;
+            int ind = Convert.ToInt32(tb.Uid);
+            List<UsersService> a = Const.BD.UsersService.Where(x => x.id_users == ind).ToList();
+            double summ = 0;
+            if (a.Count != 0)
+            {
+                foreach (UsersService item in a)
+                {
+                    summ += (double)item.Service.Price;
+                }
+
+                tb.Text = "Стоймость услуг: "+Convert.ToString(summ);
+            }
+            else
+                tb.Text = "Стоймость услуг: 0";
+        }
+
+        private void Lback_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Const.frame.Navigate(new AdminCab());
+        }
     }
 }

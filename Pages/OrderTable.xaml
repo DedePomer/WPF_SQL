@@ -33,14 +33,11 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Azure" BorderThickness="2">
+                        <Border BorderBrush="Azure" BorderThickness="2" Background="{Binding ColorDate}">
                             <StackPanel Width="360">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Surname}" Style="{StaticResource Stblockorder}"/>
-                                    <TextBlock Text=" "/>
-                                    <TextBlock Text="{Binding Name}" Style="{StaticResource Stblockorder}"/>
-                                    <TextBlock Text=" "/>
-                                    <TextBlock Text="{Binding Secondname}" Style="{StaticResource Stblockorder}"/>
+                                    <TextBlock Text="{Binding FIO}" Style="{StaticResource Stblockorder}"/>
+                                    <Rectangle Stroke="Black" Fill="{Binding ColorCell}" Width="20" Height="20" Margin="10,0,10,0"/>
                                 </StackPanel>
                                 <TextBlock Text="{Binding Date_of_receiving,StringFormat={}{0:dd.MMM.yyyy}}" Style="{StaticResource Stblockorder}"/>
                                 <StackPanel Orientation="Horizontal">
@@ -51,12 +48,13 @@
                                 </StackPanel>
                                 <TextBlock Loaded="TextBlock_Loaded" Uid="{Binding id}"/>
                                 <TextBlock Loaded="TextBlock_Loaded_1"  Uid="{Binding id}"/>
+                                <TextBlock Loaded="TextBlock_Loaded_2"  Uid="{Binding id}"/>
                             </StackPanel>
                         </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-
             </ListView>
+            <Label Name="Lback" Style="{StaticResource Slableback}" Content="Назад" MouseLeftButtonUp ="Lback_MouseLeftButtonUp"/>
         </StackPanel>
     </Grid>
 </Page>
