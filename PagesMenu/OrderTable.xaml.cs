@@ -23,6 +23,7 @@ namespace WPF_SQL
         public OrderTable()
         {
             InitializeComponent();
+            //Const.frame.Refresh();
             LVwashhouse.ItemsSource = Const.BD.Washhouse.ToList();
         }
 

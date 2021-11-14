@@ -8,7 +8,41 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ChageAdd">
 
-    <Grid>
-        
+    <Grid HorizontalAlignment="Center" >
+        <StackPanel>
+            <TextBlock Text="Добавление записей" FontSize="20" FontFamily="Times New Roman" FontStyle="Italic" HorizontalAlignment="Center"/>
+            <Border BorderBrush="Azure" BorderThickness="2" CornerRadius="5" Padding="10,0,10,5">
+                <StackPanel Orientation="Horizontal" >
+                    <StackPanel Margin="0,0,10,0" Width="200">
+                        <TextBlock Text="Введите фамилию"/>
+                        <TextBox Name="TBOXSurname" ></TextBox>
+
+                        <TextBlock Text="Введите имя"/>
+                        <TextBox Name="TBOXname"></TextBox>
+
+
+                        <TextBlock Text="Введите отчество"/>
+                        <TextBox Name="TBOXsecondname"></TextBox>
+
+                        <TextBlock Text="Введите отчество"/>
+                        <DatePicker Name="DPdate"/>
+
+                        <TextBlock Text="Выберите пол"/>
+                        <ComboBox Name="CBgender"></ComboBox>
+
+                    </StackPanel>
+
+                    <StackPanel Margin="10,0,0,0" Width="200">
+                        <TextBlock Text="Выбирите материал"/>
+                        <ListBox Name="LBmaterials" FontSize="12" SelectionMode="Multiple"></ListBox>
+
+                        <TextBlock Text="Выбирите услугу"/>
+                        <ListBox Name="LBservice" SelectionMode="Multiple"></ListBox>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Button Name="Breg" Content="Зарегистрироваться" Margin="0,10,0,10" Click="Breg_Click"/>
+            <Label Name="Lback" Style="{StaticResource Slableback}" Content="Вернуться обратно" MouseLeftButtonUp ="Lback_MouseLeftButtonUp" />
+        </StackPanel>
     </Grid>
 </Page>

@@ -23,6 +23,23 @@ namespace WPF_SQL
         public ChageAdd()
         {
             InitializeComponent();
+            LBmaterials.ItemsSource = Const.BD.Material.ToList();
+            LBmaterials.SelectedValuePath = "id_material";
+            LBmaterials.DisplayMemberPath = "material1";
+
+            LBservice.ItemsSource = Const.BD.Service.ToList();
+            LBservice.SelectedValuePath = "id_service";
+            LBservice.DisplayMemberPath = "Servise";
+        }
+
+        private void Breg_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Lback_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Const.frame.Navigate(new OrderTable());
         }
     }
 }

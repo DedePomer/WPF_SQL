@@ -90,7 +90,9 @@
           <Property Name="id_colors" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_UserMaterial_Material">
-          <End Role="Material" Type="Self.Material" Multiplicity="1" />
+          <End Role="Material" Type="Self.Material" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="UserMaterial" Type="Self.UserMaterial" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Material">
@@ -102,7 +104,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserMaterial_Washhouse">
-          <End Role="Washhouse" Type="Self.Washhouse" Multiplicity="1" />
+          <End Role="Washhouse" Type="Self.Washhouse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="UserMaterial" Type="Self.UserMaterial" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Washhouse">
@@ -138,7 +142,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UsersService_Service">
-          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="UsersService" Type="Self.UsersService" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Service">
@@ -150,7 +156,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UsersService_Washhouse">
-          <End Role="Washhouse" Type="Self.Washhouse" Multiplicity="1" />
+          <End Role="Washhouse" Type="Self.Washhouse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="UsersService" Type="Self.UsersService" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Washhouse">
@@ -414,7 +422,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserMaterial_Material">
-          <End Type="Model.Material" Role="Material" Multiplicity="1" />
+          <End Type="Model.Material" Role="Material" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.UserMaterial" Role="UserMaterial" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Material">
@@ -438,7 +448,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UsersService_Service">
-          <End Type="Model.Service" Role="Service" Multiplicity="1" />
+          <End Type="Model.Service" Role="Service" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.UsersService" Role="UsersService" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Service">
@@ -450,7 +462,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserMaterial_Washhouse">
-          <End Type="Model.Washhouse" Role="Washhouse" Multiplicity="1" />
+          <End Type="Model.Washhouse" Role="Washhouse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.UserMaterial" Role="UserMaterial" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Washhouse">
@@ -462,7 +476,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UsersService_Washhouse">
-          <End Type="Model.Washhouse" Role="Washhouse" Multiplicity="1" />
+          <End Type="Model.Washhouse" Role="Washhouse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.UsersService" Role="UsersService" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Washhouse">
