@@ -30,10 +30,50 @@ namespace WPF_SQL
             LBservice.ItemsSource = Const.BD.Service.ToList();
             LBservice.SelectedValuePath = "id_service";
             LBservice.DisplayMemberPath = "Servise";
+
+            CBcolors.ItemsSource = Const.BD.Colors.ToList();
+            CBcolors.SelectedValuePath = "id";
+            CBcolors.DisplayMemberPath = "Colors1";
+
+            CBclothes.ItemsSource = Const.BD.Clothes.ToList();
+            CBclothes.SelectedValuePath = "id";
+            CBclothes.DisplayMemberPath = "Clotges";
         }
 
         private void Breg_Click(object sender, RoutedEventArgs e)
-        {
+        {           
+            Washhouse WH = new Washhouse 
+            {Name = TBOXname.Text, Surname = TBOXSurname.Text, Secondname = TBOXsecondname.Text,
+            Date_of_receiving = DPdate.DisplayDate.Date, id_clothes = CBclothes.SelectedIndex+1, id_colors = CBcolors.SelectedIndex+1};
+            Const.BD.Washhouse.Add(WH);
+            Const.BD.SaveChanges();
+
+            foreach (Material item in LBmaterials.SelectedItems)
+            {
+                UserMaterial UM = new UserMaterial();
+                UM.id_user = WH.id;
+                UM.id_material = item.id_material;
+                Const.BD.UserMaterial.Add(UM);
+            }
+
+            foreach (Service item in LBservice.SelectedItems)
+            {
+                UsersService US = new UsersService();
+                US.id_users = WH.id;
+                US.id_service = item.id_servise;
+                Const.BD.UsersService.Add(US);
+            }
+            MessageBox.Show("Данные записаны","",MessageBoxButton.OK);
+            TBOXname.Text = "";
+            TBOXsecondname.Text = "";
+            TBOXSurname.Text = "";
+            DPdate.SelectedDate = null;
+            LBmaterials.SelectedItem = null;
+            LBservice.SelectedItem = null;
+            CBclothes.SelectedItem = null;
+            CBcolors.SelectedItem = null;
+
+            Const.BD.SaveChanges();
 
         }
 

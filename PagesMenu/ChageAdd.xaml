@@ -24,11 +24,14 @@
                         <TextBlock Text="Введите отчество"/>
                         <TextBox Name="TBOXsecondname"></TextBox>
 
-                        <TextBlock Text="Введите отчество"/>
+                        <TextBlock Text="Выбирите дату"/>
                         <DatePicker Name="DPdate"/>
 
-                        <TextBlock Text="Выберите пол"/>
-                        <ComboBox Name="CBgender"></ComboBox>
+                        <TextBlock Text="Выберите цвет"/>
+                        <ComboBox Name="CBcolors"></ComboBox>
+
+                        <TextBlock Text="Выберите тип одежды"/>
+                        <ComboBox Name="CBclothes"></ComboBox>
 
                     </StackPanel>
 
@@ -41,7 +44,7 @@
                     </StackPanel>
                 </StackPanel>
             </Border>
-            <Button Name="Breg" Content="Зарегистрироваться" Margin="0,10,0,10" Click="Breg_Click"/>
+            <Button Name="Breg" Content="Записать" Margin="0,10,0,10" Click="Breg_Click"/>
             <Label Name="Lback" Style="{StaticResource Slableback}" Content="Вернуться обратно" MouseLeftButtonUp ="Lback_MouseLeftButtonUp" />
         </StackPanel>
     </Grid>

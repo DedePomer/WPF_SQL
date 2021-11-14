@@ -141,7 +141,7 @@ namespace WPF_SQL
             }
             else
             {
-                TBLOCKpopup.Text = "Пароль менше 8 символов";
+                TBLOCKpopup.Text = "Пароль меньше 8 символов";
             }
             popup.IsOpen = true;
 
