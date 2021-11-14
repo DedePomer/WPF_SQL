@@ -50,7 +50,10 @@
                                 <TextBlock Loaded="TextBlock_Loaded" Uid="{Binding id}"/>
                                 <TextBlock Loaded="TextBlock_Loaded_1"  Uid="{Binding id}"/>
                                 <TextBlock Loaded="TextBlock_Loaded_2"  Uid="{Binding id}"/>
-                            </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Uid="{Binding id}" Content="Удалить" HorizontalAlignment="Left" Click="Button_Click"/>
+                                    </StackPanel>
+                                </StackPanel>
                             </ScrollViewer>
                         </Border>
                     </DataTemplate>
