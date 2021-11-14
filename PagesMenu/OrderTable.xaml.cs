@@ -87,5 +87,10 @@ namespace WPF_SQL
         {
             Const.frame.Navigate(new AdminCab());
         }
+
+        private void Ladd_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Const.frame.Navigate(new ChageAdd());
+        }
     }
 }

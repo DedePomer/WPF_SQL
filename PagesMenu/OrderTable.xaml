@@ -54,6 +54,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Label Name="Ladd" Style="{StaticResource Slableback}" Content="Добавить запись" MouseLeftButtonUp ="Ladd_MouseLeftButtonUp"/>
             <Label Name="Lback" Style="{StaticResource Slableback}" Content="Назад" MouseLeftButtonUp ="Lback_MouseLeftButtonUp"/>
         </StackPanel>
     </Grid>

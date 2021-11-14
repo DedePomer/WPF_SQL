@@ -65,11 +65,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PagesMenu\ChageAdd.xaml.cs">
+      <DependentUpon>ChageAdd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ListViewClass.cs" />
-    <Compile Include="Pages\OrderTable.xaml.cs">
+    <Compile Include="PagesMenu\OrderTable.xaml.cs">
       <DependentUpon>OrderTable.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AdminCab.xaml.cs">
+    <Compile Include="PagesMenu\AdminCab.xaml.cs">
       <DependentUpon>AdminCab.xaml</DependentUpon>
     </Compile>
     <Compile Include="Clothes.cs">
@@ -99,7 +102,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Reg.xaml.cs">
+    <Compile Include="PagesMain\Reg.xaml.cs">
       <DependentUpon>Reg.xaml</DependentUpon>
     </Compile>
     <Compile Include="Role.cs">
@@ -114,31 +117,35 @@
     <Compile Include="Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\UsersCab.xaml.cs">
+    <Compile Include="PagesMenu\UsersCab.xaml.cs">
       <DependentUpon>UsersCab.xaml</DependentUpon>
     </Compile>
     <Compile Include="UsersService.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\UsersTable.xaml.cs">
+    <Compile Include="PagesMenu\UsersTable.xaml.cs">
       <DependentUpon>UsersTable.xaml</DependentUpon>
     </Compile>
     <Compile Include="Washhouse.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Page Include="Pages\OrderTable.xaml">
+    <Page Include="PagesMenu\ChageAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AdminCab.xaml">
+    <Page Include="PagesMenu\OrderTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Image.xaml">
+    <Page Include="PagesMenu\AdminCab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Auto.xaml">
+    <Page Include="PagesMain\Image.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesMain\Auto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -151,25 +158,25 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Const.cs" />
-    <Compile Include="Pages\Image.xaml.cs">
+    <Compile Include="PagesMain\Image.xaml.cs">
       <DependentUpon>Image.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Auto.xaml.cs">
+    <Compile Include="PagesMain\Auto.xaml.cs">
       <DependentUpon>Auto.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\Reg.xaml">
+    <Page Include="PagesMain\Reg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\UsersCab.xaml">
+    <Page Include="PagesMenu\UsersCab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\UsersTable.xaml">
+    <Page Include="PagesMenu\UsersTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
