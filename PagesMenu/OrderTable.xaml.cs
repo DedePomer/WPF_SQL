@@ -112,5 +112,27 @@ namespace WPF_SQL
             Washhouse Update = Const.BD.Washhouse.FirstOrDefault(y => y.id == ind);
             Const.frame.Navigate(new ChageAdd(Update));
         }
+
+        private void Button_Loaded(object sender, RoutedEventArgs e)
+        {
+            Button B = (Button)sender;
+            int ind = Convert.ToInt32(B.Uid);
+            if (B.Background == Brushes.Black)
+            {
+                B.Foreground = Brushes.White;
+            }
+            else if (B.Background == Brushes.White)
+            {
+                B.Foreground = Brushes.Black;
+            }
+            else if (B.Background == Brushes.SeaGreen)
+            {
+                B.Foreground = Brushes.Yellow;
+            }
+            else
+            {
+                B.Foreground = Brushes.Black;
+            }
+        }
     }
 }

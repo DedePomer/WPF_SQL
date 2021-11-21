@@ -10,6 +10,12 @@
                 <Setter Property="Foreground" Value="Black"/>
             </Style.Setters>
         </Style>
+
+        <Style x:Key="SbuttonInversion" TargetType="Button">
+            <Style.Setters>
+                <Setter Property="Foreground" Value="DarkBlue"/>
+            </Style.Setters>
+        </Style>
         
         <Style x:Key="Slableback" TargetType="Label">
             <Style.Setters>

@@ -44,8 +44,8 @@
                                 <TextBlock Loaded="TextBlock_Loaded_1"  Uid="{Binding id}"/>
                                 <TextBlock Loaded="TextBlock_Loaded_2"  Uid="{Binding id}"/>
                                     <StackPanel Orientation="Horizontal" >
-                                        <Button Uid="{Binding id}" Content="Удалить" HorizontalAlignment="Left" Click="Button_Click"/>
-                                        <Button Uid="{Binding id}" Content="Редактировать" HorizontalAlignment="Left" Margin="10,0,0,0" Click="Button_Click_1"/>
+                                        <Button Uid="{Binding id}" Background="{Binding ColorCell}"  Content="Удалить" HorizontalAlignment="Left" Click="Button_Click" Loaded="Button_Loaded"/>
+                                        <Button Uid="{Binding id}" Background="{Binding ColorCell}" Content="Редактировать" HorizontalAlignment="Left" Margin="10,0,0,0" Click="Button_Click_1" Loaded="Button_Loaded"/>
                                     </StackPanel>
                                 </StackPanel>
                             </ScrollViewer>
