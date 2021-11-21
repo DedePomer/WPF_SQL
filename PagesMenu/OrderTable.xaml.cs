@@ -104,5 +104,13 @@ namespace WPF_SQL
             Const.frame.Navigate(new OrderTable());
             MessageBox.Show("Запись удалена", "", MessageBoxButton.OK);
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Button B = (Button)sender;
+            int ind = Convert.ToInt32(B.Uid);
+            Washhouse Update = Const.BD.Washhouse.FirstOrDefault(y => y.id == ind);
+            Const.frame.Navigate(new ChageAdd(Update));
+        }
     }
 }
