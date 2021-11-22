@@ -12,19 +12,12 @@ namespace WPF_SQL
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class Avatar
     {
-        public int id { get; set; }
-        public string Surname { get; set; }
-        public string Name { get; set; }
-        public string Secondname { get; set; }
-        public string Login { get; set; }
-        public int Password { get; set; }
-        public int id_role { get; set; }
-        public int id_gender { get; set; }
+        public int id_user { get; set; }
+        public string PhotoPath { get; set; }
+        public byte[] PhotoBinary { get; set; }
     
-        public virtual Avatar Avatar { get; set; }
-        public virtual Gender Gender { get; set; }
-        public virtual Role Role { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

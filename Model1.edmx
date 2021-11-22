@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Avatar">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="int" Nullable="false" />
+          <Property Name="PhotoPath" Type="nchar" MaxLength="30" />
+          <Property Name="PhotoBinary" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Clothes">
           <Key>
             <PropertyRef Name="id" />
@@ -117,6 +125,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Users_Avatar">
+          <End Role="Avatar" Type="Self.Avatar" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Avatar">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Users_Gender">
           <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -194,6 +214,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="Avatar" EntityType="Self.Avatar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clothes" EntityType="Self.Clothes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Colors" EntityType="Self.Colors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
@@ -211,6 +232,10 @@
           <AssociationSet Name="FK_UserMaterial_Washhouse" Association="Self.FK_UserMaterial_Washhouse">
             <End Role="Washhouse" EntitySet="Washhouse" />
             <End Role="UserMaterial" EntitySet="UserMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Avatar" Association="Self.FK_Users_Avatar">
+            <End Role="Avatar" EntitySet="Avatar" />
+            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="FK_Users_Gender" Association="Self.FK_Users_Gender">
             <End Role="Gender" EntitySet="Gender" />
@@ -242,6 +267,7 @@
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Avatar" EntityType="Model.Avatar" />
           <EntitySet Name="Clothes" EntityType="Model.Clothes" />
           <EntitySet Name="Colors" EntityType="Model.Colors" />
           <EntitySet Name="Gender" EntityType="Model.Gender" />
@@ -252,6 +278,10 @@
           <EntitySet Name="Users" EntityType="Model.Users" />
           <EntitySet Name="UsersService" EntityType="Model.UsersService" />
           <EntitySet Name="Washhouse" EntityType="Model.Washhouse" />
+          <AssociationSet Name="FK_Users_Avatar" Association="Model.FK_Users_Avatar">
+            <End Role="Avatar" EntitySet="Avatar" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
           <AssociationSet Name="FK_Washhouse_Clothes" Association="Model.FK_Washhouse_Clothes">
             <End Role="Clothes" EntitySet="Clothes" />
             <End Role="Washhouse" EntitySet="Washhouse" />
@@ -285,6 +315,15 @@
             <End Role="UsersService" EntitySet="UsersService" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Avatar">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <Property Name="PhotoPath" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="PhotoBinary" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Users" Relationship="Model.FK_Users_Avatar" FromRole="Avatar" ToRole="Users" />
+        </EntityType>
         <EntityType Name="Clothes">
           <Key>
             <PropertyRef Name="id" />
@@ -356,6 +395,7 @@
           <Property Name="Password" Type="Int32" Nullable="false" />
           <Property Name="id_role" Type="Int32" Nullable="false" />
           <Property Name="id_gender" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Avatar" Relationship="Model.FK_Users_Avatar" FromRole="Users" ToRole="Avatar" />
           <NavigationProperty Name="Gender" Relationship="Model.FK_Users_Gender" FromRole="Users" ToRole="Gender" />
           <NavigationProperty Name="Role" Relationship="Model.FK_Users_Role" FromRole="Users" ToRole="Role" />
         </EntityType>
@@ -385,6 +425,18 @@
           <NavigationProperty Name="UserMaterial" Relationship="Model.FK_UserMaterial_Washhouse" FromRole="Washhouse" ToRole="UserMaterial" />
           <NavigationProperty Name="UsersService" Relationship="Model.FK_UsersService_Washhouse" FromRole="Washhouse" ToRole="UsersService" />
         </EntityType>
+        <Association Name="FK_Users_Avatar">
+          <End Type="Model.Avatar" Role="Avatar" Multiplicity="1" />
+          <End Type="Model.Users" Role="Users" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Avatar">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Washhouse_Clothes">
           <End Type="Model.Clothes" Role="Clothes" Multiplicity="1" />
           <End Type="Model.Washhouse" Role="Washhouse" Multiplicity="*" />
@@ -495,6 +547,15 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Avatar">
+            <EntityTypeMapping TypeName="Model.Avatar">
+              <MappingFragment StoreEntitySet="Avatar">
+                <ScalarProperty Name="PhotoBinary" ColumnName="PhotoBinary" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Clothes">
             <EntityTypeMapping TypeName="Model.Clothes">
               <MappingFragment StoreEntitySet="Clothes">

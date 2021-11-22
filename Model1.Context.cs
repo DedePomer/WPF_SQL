@@ -25,6 +25,7 @@ namespace WPF_SQL
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Avatar> Avatar { get; set; }
         public virtual DbSet<Clothes> Clothes { get; set; }
         public virtual DbSet<Colors> Colors { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }

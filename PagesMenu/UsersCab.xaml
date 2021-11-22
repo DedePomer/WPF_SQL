@@ -8,7 +8,42 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="UsersCab">
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Ту ничего нет" FontSize="30"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="400"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Border.Background>
+                <LinearGradientBrush Opacity="0.6">
+                    <GradientStop Color="Black" Offset="1" />
+                    <GradientStop Color="CadetBlue" Offset="0.1" />
+                    <GradientStop  Color="LightYellow" Offset="0.5" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Content="H" Height="30" BorderThickness="0" />
+                <Button Content="->" Height="30" BorderThickness="0"/>
+            </StackPanel>
+        </Border>
+
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <Image Name="IUserAvatar" Width="150" Height="150" Margin="10" Source="..\Resources\nophoto.png"/>
+            <Button Name="BChagePhoto" Margin="30,0,30,0">Изменить фото</Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">
+            <TextBlock Name="TBLOCKFIO" Text="ФИО" FontSize="25" FontStyle="Italic"/>
+            <Line X1="0" Y1="0" X2="500" Y2="0" Stroke="Blue" StrokeThickness="2" />
+            <TextBlock Name="TBLOCKlogin" Text="Логин: "/>
+            <TextBlock Name="TBLOCKrole" Text="Роль: "/>
+            <TextBlock Name="TBLOCKGender" Text="Пол: "/>
+        </StackPanel>
+
     </Grid>
 </Page>
