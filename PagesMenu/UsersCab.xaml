@@ -18,18 +18,52 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+        <Border Name="BorderMain" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BorderThickness="0">
             <Border.Background>
-                <LinearGradientBrush Opacity="0.6">
-                    <GradientStop Color="Black" Offset="1" />
-                    <GradientStop Color="CadetBlue" Offset="0.1" />
-                    <GradientStop  Color="LightYellow" Offset="0.5" />
+                <LinearGradientBrush Opacity="0.5" >
+                    <GradientStop  Color="LightYellow" Offset="0.1" />
+                    <GradientStop Color="CadetBlue" Offset="0.5"  />
+                    <GradientStop Color="Black" Offset="1"  />
                 </LinearGradientBrush>
             </Border.Background>
             <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button Content="H" Height="30" BorderThickness="0" />
                 <Button Content="->" Height="30" BorderThickness="0"/>
             </StackPanel>
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetName="BorderMain" 
+                                Storyboard.TargetProperty="Background.GradientStops[0].Color"
+                                Duration="0:0:18" RepeatBehavior="Forever" >
+                                    <LinearColorKeyFrame KeyTime="0:0:5" Value="Black"/>
+                                    <LinearColorKeyFrame KeyTime="0:0:11" Value="CadetBlue"/>
+                                    <LinearColorKeyFrame KeyTime="0:0:16" Value="LightYellow"/>
+                                </ColorAnimationUsingKeyFrames>
+
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetName="BorderMain" 
+                                Storyboard.TargetProperty="Background.GradientStops[1].Color"
+                                Duration="0:0:18" RepeatBehavior="Forever" >
+                                    <LinearColorKeyFrame KeyTime="0:0:5"  Value="LightYellow"></LinearColorKeyFrame>
+                                    <LinearColorKeyFrame KeyTime="0:0:11" Value="Black"/>
+                                    <LinearColorKeyFrame KeyTime="0:0:16" Value="CadetBlue"/>
+                                </ColorAnimationUsingKeyFrames>
+
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetName="BorderMain" 
+                                Storyboard.TargetProperty="Background.GradientStops[2].Color"
+                                Duration="0:0:18" RepeatBehavior="Forever" >
+                                    <LinearColorKeyFrame KeyTime="0:0:5"  Value="CadetBlue"></LinearColorKeyFrame>
+                                    <LinearColorKeyFrame KeyTime="0:0:11" Value="LightYellow"/>
+                                    <LinearColorKeyFrame KeyTime="0:0:16" Value="Black"/>
+                                </ColorAnimationUsingKeyFrames>
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Border.Triggers>
         </Border>
 
         <StackPanel Grid.Row="1" Grid.Column="0">
@@ -40,7 +74,7 @@
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">
             <TextBlock Name="TBLOCKFIO" Text="ФИО" FontSize="25" FontStyle="Italic"/>
             <Line X1="0" Y1="0" X2="500" Y2="0" Stroke="Blue" StrokeThickness="2" />
-            <TextBlock Name="TBLOCKlogin" Text="Логин: "/>
+            <TextBlock Name="TBLOCKlogin" Text="Логин: " />
             <TextBlock Name="TBLOCKrole" Text="Роль: "/>
             <TextBlock Name="TBLOCKGender" Text="Пол: "/>
         </StackPanel>
