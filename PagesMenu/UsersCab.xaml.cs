@@ -24,24 +24,7 @@ namespace WPF_SQL
         public UsersCab()
         {
             InitializeComponent();
-
-           
-
-            //GradientStopCollection GradientCollection = new GradientStopCollection();
-            //GradientCollection.Add(new GradientStop(System.Windows.Media.Colors.Black, 1.0));
-            //GradientCollection.Add(new GradientStop(System.Windows.Media.Colors.CadetBlue, 0.1));
-            //GradientCollection.Add(new GradientStop(System.Windows.Media.Colors.LightYellow, 0.5));
-            //LinearGradientBrush brush = new LinearGradientBrush(GradientCollection);
-
-            //DoubleAnimation doubleAnimation = new DoubleAnimation();
-            ////doubleAnimation.Duration = TimeSpan.FromSeconds(1);
-            ////doubleAnimation.From = 1.0;
-            ////doubleAnimation.To = 0.5;
-            ////BorderMain.BeginAnimation(, doubleAnimation);
-
-            //ColorAnimationUsingKeyFrames colorAnimation = new ColorAnimationUsingKeyFrames();
-            //colorAnimation.Duration = TimeSpan.FromSeconds(6);
-            //colorAnimation.KeyFrames.Add(new LinearGradientBrush());
+         
 
 
         }
