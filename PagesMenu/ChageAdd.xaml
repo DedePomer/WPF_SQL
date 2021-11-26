@@ -20,7 +20,6 @@
                         <TextBlock Text="Введите имя"/>
                         <TextBox Name="TBOXname"></TextBox>
 
-
                         <TextBlock Text="Введите отчество"/>
                         <TextBox Name="TBOXsecondname"></TextBox>
 

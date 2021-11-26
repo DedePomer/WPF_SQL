@@ -68,6 +68,9 @@
     <Compile Include="Avatar.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Window\LogPassWindow.xaml.cs">
+      <DependentUpon>LogPassWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PagesMenu\ChageAdd.xaml.cs">
       <DependentUpon>ChageAdd.xaml</DependentUpon>
     </Compile>
@@ -114,6 +117,10 @@
     <Compile Include="Service.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Window\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserClass.cs" />
     <Compile Include="UserMaterial.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -132,6 +139,10 @@
     <Compile Include="Washhouse.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Window\LogPassWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PagesMenu\ChageAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -180,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PagesMenu\UsersTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window\SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -235,10 +250,12 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\настройка.png" />
     <Resource Include="Resources\nophoto.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

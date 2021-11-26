@@ -5,18 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="92350b2e5b96479b9107535e2b1c65a2" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Avatar" Width="1.5" PointX="5.75" PointY="8" />
+        <EntityTypeShape EntityType="Model.Avatar" Width="1.5" PointX="10.25" PointY="8" />
         <EntityTypeShape EntityType="Model.Clothes" Width="1.5" PointX="0.75" PointY="1" />
         <EntityTypeShape EntityType="Model.Colors" Width="1.5" PointX="0.75" PointY="4" />
-        <EntityTypeShape EntityType="Model.Gender" Width="1.5" PointX="5.75" PointY="10.875" />
+        <EntityTypeShape EntityType="Model.Gender" Width="1.5" PointX="5.75" PointY="8.125" />
         <EntityTypeShape EntityType="Model.Material" Width="1.5" PointX="3" PointY="10" />
-        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="5.75" PointY="13.25" />
+        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="5.75" PointY="11.125" />
         <EntityTypeShape EntityType="Model.Service" Width="1.5" PointX="3" PointY="7.25" />
         <EntityTypeShape EntityType="Model.UserMaterial" Width="1.5" PointX="5.25" PointY="3.75" />
         <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="8" PointY="7.25" />
         <EntityTypeShape EntityType="Model.UsersService" Width="1.5" PointX="5.25" PointY="0.75" />
         <EntityTypeShape EntityType="Model.Washhouse" Width="1.5" PointX="3" PointY="3.125" />
-        <AssociationConnector Association="Model.FK_Users_Avatar" />
+        <AssociationConnector Association="Model.FK_Avatar_Users" />
         <AssociationConnector Association="Model.FK_Washhouse_Clothes" />
         <AssociationConnector Association="Model.FK_Washhouse_Colors" />
         <AssociationConnector Association="Model.FK_Users_Gender" />

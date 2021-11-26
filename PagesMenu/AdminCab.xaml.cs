@@ -20,6 +20,12 @@ namespace WPF_SQL
     /// </summary>
     public partial class AdminCab : Page
     {
+        private Users _user;
+        public AdminCab(Users user)
+        {
+            InitializeComponent();
+            _user = user;
+        }
         public AdminCab()
         {
             InitializeComponent();
@@ -38,6 +44,11 @@ namespace WPF_SQL
         private void Border_Click(object sender, RoutedEventArgs e)
         {
             Const.frame.Navigate(new OrderTable());
+        }
+
+        private void Bcab_Click(object sender, RoutedEventArgs e)
+        {
+            Const.frame.Navigate(new UsersCab(_user));
         }
     }
 }

@@ -54,6 +54,9 @@ namespace WPF_SQL
                         Secondname = TBOXsecondname.Text
                     };
                     Const.BD.Users.Add(User);
+
+
+
                     Const.BD.SaveChanges();
                     MessageBox.Show("Вы зарегистрировались", "Регистрация", MessageBoxButton.OK);
                     TBOXlogin.Text = "";
@@ -87,7 +90,7 @@ namespace WPF_SQL
 
         }
 
-        bool VerificationPass (string pass)
+        public static bool VerificationPass (string pass)
         {
             var Zaglav = new Regex(@"[A-Z]+");
             var Storch = new Regex(@"(?=.{3,}[a-z])");//[a-z]{3,} - это работает когда буквы идут друг за другом 

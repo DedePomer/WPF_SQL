@@ -36,10 +36,10 @@ namespace WPF_SQL
                 switch (User.id_role)
                 {
                     case 1:
-                        Const.frame.Navigate(new AdminCab());
+                        Const.frame.Navigate(new AdminCab(User));
                         break;
                     case 2:
-                        Const.frame.Navigate(new UsersCab());
+                        Const.frame.Navigate(new UsersCab(User));
                         break;
                 }                
             }

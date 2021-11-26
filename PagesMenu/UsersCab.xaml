@@ -27,8 +27,16 @@
                 </LinearGradientBrush>
             </Border.Background>
             <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button Content="H" Height="30" BorderThickness="0" />
-                <Button Content="->" Height="30" BorderThickness="0"/>
+                <Menu Height="25" Padding="0" VerticalAlignment="Top">
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <Image Source="..\Resources\настройка.png"/>
+                        </MenuItem.Header>
+                        <MenuItem Header="Изменить данные профиля" Click="MenuItem_Click"/>
+                        <MenuItem Header="Изменить логин и пароль" Click="MenuItem_Click_1"/>
+                    </MenuItem>
+                    <MenuItem Header="X" Background="Red" Click="MenuItem_Click_2"/>
+                </Menu>
             </StackPanel>
             <Border.Triggers>
                 <EventTrigger RoutedEvent="Loaded">
@@ -68,7 +76,7 @@
 
         <StackPanel Grid.Row="1" Grid.Column="0">
             <Image Name="IUserAvatar" Width="150" Height="150" Margin="10" Source="..\Resources\nophoto.png"/>
-            <Button Name="BChagePhoto" Margin="30,0,30,0">Изменить фото</Button>
+            <Button Name="BChagePhoto" Margin="30,0,30,0" Click="BChagePhoto_Click">Изменить фото</Button>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">
