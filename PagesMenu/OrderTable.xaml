@@ -15,6 +15,32 @@
     
     <Grid>
         <StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <TextBlock FontSize="15" HorizontalAlignment="Center" Margin="5,12,5,0">Фильтры</TextBlock>
+                    <GroupBox Header="Выбирите цвет">
+                        <ComboBox Name="CBColors" SelectionChanged ="CBColors_SelectionChanged"></ComboBox>
+                    </GroupBox>
+                    <GroupBox Header="Введите значение">
+                        <TextBox Name="TBOXSearch" Width="150" TextChanged ="TBOXSearch_TextChanged" ></TextBox>
+                    </GroupBox>
+                    <GroupBox Header="Галочка">
+                        <CheckBox Name="CheckBAllPhoto" Checked="CheckBAllPhoto_Checked"  Unchecked="CheckBAllPhoto_Unchecked">Только джинсы</CheckBox>
+                    </GroupBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <TextBlock FontSize="15" HorizontalAlignment="Center" Margin="5,12,5,0">Сортировка</TextBlock>
+                    <GroupBox Header="Выбирите способ">
+                        <ComboBox Name="CBSort" SelectionChanged ="CBSort_SelectionChanged">
+                            <ComboBoxItem Content="По цвету"/>
+                            <ComboBoxItem Content="По дате"/>
+                            <ComboBoxItem Content="По имени"/>
+                        </ComboBox>
+                    </GroupBox>
+                    <Button Name="BUp" Height="25" Width="25" Margin="0,10,5,0" Content="↑" Click="BUp_Click"/>
+                    <Button Name="BDown" Height="25" Width="25" Margin="0,10,0,0" Content="↓" Click="BDown_Click"/>
+                </StackPanel>
+            </StackPanel>
             <ListView Name ="LVwashhouse" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="250" ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListView.Background>
                     <SolidColorBrush Color="Gray" Opacity="0"/>

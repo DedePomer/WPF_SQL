@@ -20,11 +20,21 @@ namespace WPF_SQL
     /// </summary>
     public partial class OrderTable : Page
     {
+        List<Washhouse> StartFilter = Const.BD.Washhouse.ToList();
+        List<Washhouse> OrderFilter;
         public OrderTable()
         {
             InitializeComponent();
-            //Const.frame.Refresh();
-            LVwashhouse.ItemsSource = Const.BD.Washhouse.ToList();
+            OrderFilter = StartFilter;
+            LVwashhouse.ItemsSource = StartFilter;
+            List<Colors> ColorsList = Const.BD.Colors.ToList();
+            CBColors.Items.Add("Все");
+            for (int i = 0; i < ColorsList.Count; i++)
+            {
+                CBColors.Items.Add(ColorsList[i].Colors1);
+            }
+            CBColors.SelectedIndex = 0;
+            CBSort.SelectedIndex = 0;
         }
 
         private void TextBlock_Loaded(object sender, RoutedEventArgs e)
@@ -132,6 +142,94 @@ namespace WPF_SQL
             else
             {
                 B.Foreground = Brushes.Black;
+            }
+        }
+
+        private void Filter()
+        {
+            int index = CBColors.SelectedIndex;
+            if (CBColors.SelectedIndex != 0)
+            {
+                OrderFilter = StartFilter.Where(x => x.id_colors == index).ToList();
+            }
+            else
+            {
+                OrderFilter = StartFilter;
+            }
+            if (!string.IsNullOrWhiteSpace(TBOXSearch.Text))
+            {
+                OrderFilter = OrderFilter.Where(x => x.FIO.Contains(TBOXSearch.Text) ||
+                x.FIO.ToLower().Contains(TBOXSearch.Text) ||
+                x.FIO.ToUpper().Contains(TBOXSearch.Text)).ToList();
+            }
+            if (CheckBAllPhoto.IsChecked == true)
+            {
+                OrderFilter = OrderFilter.Where(x => x.id_clothes == 1).ToList();
+            }
+            LVwashhouse.ItemsSource = OrderFilter;
+
+        }
+
+        private void CBColors_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Filter();
+        }
+
+        private void TBOXSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Filter();
+        }
+
+        private void CheckBAllPhoto_Checked(object sender, RoutedEventArgs e)
+        {
+            Filter();
+        }
+
+        private void CheckBAllPhoto_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Filter();
+        }
+
+        private void CBSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            sort();
+            LVwashhouse.Items.Refresh();
+        }
+
+        private void BUp_Click(object sender, RoutedEventArgs e)
+        {
+            sort();
+            LVwashhouse.Items.Refresh();
+        }
+
+        private void BDown_Click(object sender, RoutedEventArgs e)
+        {            
+            sort();
+            OrderFilter.Reverse();
+            LVwashhouse.Items.Refresh();
+        }
+
+        private int sort()
+        {
+            switch (CBSort.SelectedIndex)
+            {
+                case 0:
+                    OrderFilter.Sort((x, y) => x.id_colors.CompareTo(y.id_colors));
+                    return 0;
+
+                case 1:
+                    OrderFilter.Sort((x, y) => x.Date_of_receiving.CompareTo(y.Date_of_receiving));
+                    return 1;
+
+                case 2:
+                    OrderFilter.Sort((x, y) => x.Name.CompareTo(y.Name));
+                    return 2;
+
+                case -1:
+                    return -1;
+
+                default:
+                    return -2;
             }
         }
     }
