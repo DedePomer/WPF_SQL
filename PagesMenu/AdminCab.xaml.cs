@@ -23,7 +23,7 @@ namespace WPF_SQL
         private Users _user;
         public AdminCab(Users user)
         {
-            InitializeComponent();
+            InitializeComponent();// Прикол
             _user = user;
         }
         public AdminCab()
