@@ -81,6 +81,17 @@
             </ListView>
             <Label Name="Ladd" Style="{StaticResource Slableback}" Content="Добавить запись" MouseLeftButtonUp ="Ladd_MouseLeftButtonUp"/>
             <Label Name="Lback" Style="{StaticResource Slableback}" Content="Назад" MouseLeftButtonUp ="Lback_MouseLeftButtonUp"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Name="PginPrev" Uid="prev" Text=" Пред. " MouseDown="GoPage_MouseDown"/>
+                <TextBlock Name="Pagin1" Uid="1" Text="{Binding  Path = NPage[0], StringFormat={}{0,3}}" Visibility="{Binding Visible[0]}" FontWeight="{Binding Bold[0]}" MouseDown="GoPage_MouseDown"/>
+                <TextBlock Name="Pagin2" Uid="2" Text="{Binding  Path = NPage[1], StringFormat={}{0,3}}" Visibility="{Binding Visible[1]}" FontWeight="{Binding Bold[1]}" MouseDown="GoPage_MouseDown"/>
+                <TextBlock Name="Pagin3" Uid="3" Text="{Binding  Path = NPage[2], StringFormat={}{0,3}}" Visibility="{Binding Visible[2]}" FontWeight="{Binding Bold[2]}" MouseDown="GoPage_MouseDown"/>
+                <TextBlock Name="Pagin4" Uid="4" Text="{Binding  Path = NPage[3], StringFormat={}{0,3}}" Visibility="{Binding Visible[3]}" FontWeight="{Binding Bold[3]}" MouseDown="GoPage_MouseDown"/>
+                <TextBlock Name="Pagin5" Uid="5" Text="{Binding  Path = NPage[4], StringFormat={}{0,3}}" Visibility="{Binding Visible[4]}" FontWeight="{Binding Bold[4]}" MouseDown="GoPage_MouseDown"/>
+                <TextBlock Name="PaginNext" Uid="next" Text=" След." MouseDown="GoPage_MouseDown"/>
+                
+                <TextBox Name="PaginCountAllOrders" TextChanged="PaginCountAllOrders_TextChanged"  Margin="5,0,0,0"  Width="40"></TextBox>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

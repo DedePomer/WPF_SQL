@@ -20,6 +20,7 @@ namespace WPF_SQL
     /// </summary>
     public partial class OrderTable : Page
     {
+        PageChange _PageChange = new PageChange();
         List<Washhouse> StartFilter = Const.BD.Washhouse.ToList();
         List<Washhouse> OrderFilter;
         public OrderTable()
@@ -35,7 +36,10 @@ namespace WPF_SQL
             }
             CBColors.SelectedIndex = 0;
             CBSort.SelectedIndex = 0;
+            DataContext = _PageChange;
         }
+
+        
 
         private void TextBlock_Loaded(object sender, RoutedEventArgs e)
         {
@@ -167,7 +171,6 @@ namespace WPF_SQL
                 OrderFilter = OrderFilter.Where(x => x.id_clothes == 1).ToList();
             }
             LVwashhouse.ItemsSource = OrderFilter;
-
         }
 
         private void CBColors_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -178,16 +181,19 @@ namespace WPF_SQL
         private void TBOXSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             Filter();
+            _PageChange.CurrentPage = 1;
         }
 
         private void CheckBAllPhoto_Checked(object sender, RoutedEventArgs e)
         {
             Filter();
+            _PageChange.CurrentPage = 1;
         }
 
         private void CheckBAllPhoto_Unchecked(object sender, RoutedEventArgs e)
         {
             Filter();
+            _PageChange.CurrentPage = 1;
         }
 
         private void CBSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -231,6 +237,45 @@ namespace WPF_SQL
                 default:
                     return -2;
             }
+        }
+
+        private void PaginCountAllOrders_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Convert.ToInt32(PaginCountAllOrders.Text) <= 0)
+            {
+                MessageBox.Show("Значение не может быть меньше нуля", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                _PageChange.CountOrder = OrderFilter.Count;
+            }
+            else if (PaginCountAllOrders.Text != "")
+            {
+                _PageChange.CountOrder = Convert.ToInt32(PaginCountAllOrders.Text); // если в текстовом поле есnь значение, присваиваем его свойству объекта, которое хранит количество записей на странице
+            }
+            else
+            {
+                _PageChange.CountOrder = OrderFilter.Count; // если в текстовом поле значения нет, присваиваем свойству объекта, которое хранит количество записей на странице количество элементов в списке
+            }
+            _PageChange.Countlist = OrderFilter.Count;  // присваиваем новое значение свойству, которое в объекте отвечает за общее количество записей
+            //LVwashhouse.ItemsSource = OrderFilter.Skip(0).Take(_PageChange.CountOrder).ToList();
+            LVwashhouse.ItemsSource = OrderFilter.Skip(_PageChange.CurrentPage * _PageChange.CountOrder - _PageChange.CountOrder).Take(_PageChange.CountOrder).ToList();
+            _PageChange.CurrentPage = 1;
+        }
+
+        private void GoPage_MouseDown(object sender, RoutedEventArgs e)
+        {
+            TextBlock TBLOCK = (TextBlock)sender;
+            switch (TBLOCK.Uid)  // определяем, куда конкретно было сделано нажатие
+            {
+                case "prev":
+                    _PageChange.CurrentPage--;
+                    break;
+                case "next":
+                    _PageChange.CurrentPage++;
+                    break;
+                default:
+                    _PageChange.CurrentPage = Convert.ToInt32(TBLOCK.Text);
+                    break;
+            }
+            LVwashhouse.ItemsSource = OrderFilter.Skip(_PageChange.CurrentPage * _PageChange.CountOrder - _PageChange.CountOrder).Take(_PageChange.CountOrder).ToList();
         }
     }
 }

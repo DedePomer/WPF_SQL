@@ -68,6 +68,7 @@
     <Compile Include="Avatar.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="PageChange.cs" />
     <Compile Include="Window\LogPassWindow.xaml.cs">
       <DependentUpon>LogPassWindow.xaml</DependentUpon>
     </Compile>

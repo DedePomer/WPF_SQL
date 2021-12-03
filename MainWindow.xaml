@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_SQL"
         mc:Ignorable="d"
-        Title="Прачечная" Height="500" Width="800" >
+        Title="Прачечная" Height="550" Width="800" >
 
     <!--<Window.Background>
         <SolidColorBrush Opacity="0" Color="White"/>
