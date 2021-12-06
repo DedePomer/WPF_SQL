@@ -35,7 +35,7 @@ namespace WPF_SQL
             }
         }
 
-        int countorder;//количество записей на странице
+        static public int countorder;//количество записей на странице
         public int CountOrder  //свойство, в котором хранится количество записей на странице, при изменении данного свойства будет изменяться общее количесво страниц для отображения
         {
             get => countorder;
@@ -53,7 +53,7 @@ namespace WPF_SQL
             }
         }
 
-        int countlist; // количество записей в списке
+        static public int countlist; // количество записей в списке
         public int Countlist //свойство, в котором хранится общее количество записей в списке, при изменении данного свойства будет изменяться общее количесво страниц для отображения
         {
             get => countlist;
@@ -86,29 +86,35 @@ namespace WPF_SQL
                     currentpage = CountPages;
                 }
                 //отрисовка меню с номерами страниц, рассмотрим три возможных случая                            
-                for (int i = 0; i < countitems; i++)
-                {
-                    if (currentpage < (1 + countitems / 2) || CountPages < countitems) NPage[i] = i + 1;//если страница в начале списка
-                    else if (currentpage > CountPages - (countitems / 2 + 1)) NPage[i] = CountPages - (countitems - 1) + i;//если страница в конце списка
-                    else NPage[i] = currentpage + i - (countitems / 2);//если страница в середине списка
-                }
-                for (int i = 0; i < countitems; i++)//выделяем активную страницу жирным
-                {
-                    if (NPage[i] == currentpage) Bold[i] = "ExtraBold";
-                    else Bold[i] = "Regular";
-                }
-                //вызываем созбытие, связанное с изменением свойств, используемых в привязке на странице
-                PropertyChanged(this, new PropertyChangedEventArgs("NPage"));
-                PropertyChanged(this, new PropertyChangedEventArgs("Visible"));
-                PropertyChanged(this, new PropertyChangedEventArgs("Bold"));
+                
             }
         }
 
-
+        public void sketch () //отрисовка
+        {
+            for (int i = 0; i < countitems; i++)
+            {
+                if (currentpage < (1 + countitems / 2) || CountPages < countitems)
+                    NPage[i] = i + 1;//если страница в начале списка
+                else if (currentpage > CountPages - (countitems / 2 + 1))
+                    NPage[i] = CountPages - (countitems - 1) + i;//если страница в конце списка
+                else
+                    NPage[i] = currentpage + i - (countitems / 2);//если страница в середине списка
+            }
+            for (int i = 0; i < countitems; i++)//выделяем активную страницу жирным
+            {
+                if (NPage[i] == currentpage) Bold[i] = "ExtraBold";
+                else Bold[i] = "Regular";
+            }
+            //вызываем созбытие, связанное с изменением свойств, используемых в привязке на странице
+            PropertyChanged(this, new PropertyChangedEventArgs("NPage"));
+            PropertyChanged(this, new PropertyChangedEventArgs("Visible"));
+            PropertyChanged(this, new PropertyChangedEventArgs("Bold"));
+        }
 
         public PageChange() // контруктор
         {
-            for (int i = 0; i < countitems; i++)  // показываем исходное меню ( 1 2 3 4 5)
+            for (int i = 0; i < countitems; i++)
             {
                 if (i == 0)
                 {

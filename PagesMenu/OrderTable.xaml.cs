@@ -20,6 +20,7 @@ namespace WPF_SQL
     /// </summary>
     public partial class OrderTable : Page
     {
+        int f = 0, s = 0, curord;
         PageChange _PageChange = new PageChange();
         List<Washhouse> StartFilter = Const.BD.Washhouse.ToList();
         List<Washhouse> OrderFilter;
@@ -37,6 +38,7 @@ namespace WPF_SQL
             CBColors.SelectedIndex = 0;
             CBSort.SelectedIndex = 0;
             DataContext = _PageChange;
+            curord = OrderFilter.Count();
         }
 
         
@@ -170,13 +172,19 @@ namespace WPF_SQL
             {
                 OrderFilter = OrderFilter.Where(x => x.id_clothes == 1).ToList();
             }
-            //LVwashhouse.ItemsSource = OrderFilter;
-            _PageChange.CurrentPage = 1;
-            _PageChange.CountOrder = OrderFilter.Count;
-            _PageChange.Countlist = OrderFilter.Count;
-            LVwashhouse.ItemsSource = OrderFilter.Skip(_PageChange.CurrentPage * _PageChange.CountOrder - _PageChange.CountOrder).Take(_PageChange.CountOrder).ToList();
-            
-
+            if (f == 0)
+            {
+                LVwashhouse.ItemsSource = OrderFilter;
+                f++;
+            }
+            else 
+            {
+                _PageChange.CurrentPage = 1;
+                _PageChange.CountOrder = curord;
+                _PageChange.Countlist = OrderFilter.Count;
+                LVwashhouse.ItemsSource = OrderFilter.Skip(_PageChange.CurrentPage * _PageChange.CountOrder - _PageChange.CountOrder).Take(_PageChange.CountOrder).ToList();
+                _PageChange.sketch();
+            }                                    
         }
 
         private void CBColors_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -202,20 +210,41 @@ namespace WPF_SQL
         private void CBSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             sort();
-            LVwashhouse.Items.Refresh();
+            if (s == 0)
+            {
+                LVwashhouse.Items.Refresh();
+                s++;
+            }
+            else
+            {
+                _PageChange.CurrentPage = 1;
+                _PageChange.CountOrder = curord;
+                _PageChange.Countlist = OrderFilter.Count;
+                LVwashhouse.ItemsSource = OrderFilter.Skip(_PageChange.CurrentPage * _PageChange.CountOrder - _PageChange.CountOrder).Take(_PageChange.CountOrder).ToList();
+                _PageChange.sketch();
+            }
+            
         }
 
         private void BUp_Click(object sender, RoutedEventArgs e)
         {
             sort();
-            LVwashhouse.Items.Refresh();
+            _PageChange.CurrentPage = 1;
+            _PageChange.CountOrder = curord;
+            _PageChange.Countlist = OrderFilter.Count;
+            LVwashhouse.ItemsSource = OrderFilter.Skip(_PageChange.CurrentPage * _PageChange.CountOrder - _PageChange.CountOrder).Take(_PageChange.CountOrder).ToList();
+            _PageChange.sketch();
         }
 
         private void BDown_Click(object sender, RoutedEventArgs e)
         {            
             sort();
             OrderFilter.Reverse();
-            LVwashhouse.Items.Refresh();
+            _PageChange.CurrentPage = 1;
+            _PageChange.CountOrder = curord;
+            _PageChange.Countlist = OrderFilter.Count;
+            LVwashhouse.ItemsSource = OrderFilter.Skip(_PageChange.CurrentPage * _PageChange.CountOrder - _PageChange.CountOrder).Take(_PageChange.CountOrder).ToList();
+            _PageChange.sketch();
         }
 
         private int sort()
@@ -249,19 +278,23 @@ namespace WPF_SQL
                 if (PaginCountAllOrders.Text != "")
                 {
                     _PageChange.CountOrder = Convert.ToInt32(PaginCountAllOrders.Text);
+                    curord = _PageChange.CountOrder;
                 }
                 else
                 {
+                    OrderFilter = StartFilter;
                     _PageChange.CountOrder = OrderFilter.Count;
+                    curord = _PageChange.CountOrder;
                 }
                 _PageChange.Countlist = OrderFilter.Count;
-
-                LVwashhouse.ItemsSource = OrderFilter.Skip(_PageChange.CurrentPage * _PageChange.CountOrder - _PageChange.CountOrder).Take(_PageChange.CountOrder).ToList();
                 _PageChange.CurrentPage = 1;
+                LVwashhouse.ItemsSource = OrderFilter.Skip(_PageChange.CurrentPage * _PageChange.CountOrder - _PageChange.CountOrder).Take(_PageChange.CountOrder).ToList();               
+                _PageChange.sketch();                
             }
             catch
             {
                 MessageBox.Show("Значение не может быть меньше 0", "Ошибка", MessageBoxButton.OK,MessageBoxImage.Error);
+                PaginCountAllOrders.Text = "";
             }
         }
 
@@ -281,6 +314,7 @@ namespace WPF_SQL
                     break;
             }
             LVwashhouse.ItemsSource = OrderFilter.Skip(_PageChange.CurrentPage * _PageChange.CountOrder - _PageChange.CountOrder).Take(_PageChange.CountOrder).ToList();
+            _PageChange.sketch();
         }
     }
 }
