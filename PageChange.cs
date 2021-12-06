@@ -9,7 +9,7 @@ namespace WPF_SQL
 {
     class PageChange : INotifyPropertyChanged  // класс, который наследуется от интерфейса INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;  //сибытие, для изменения значения одного из свойтс, описанных ниже
+        public event PropertyChangedEventHandler PropertyChanged;  //событие, для изменения значения одного из свойств, описанных ниже
         static int countitems = 5; //количество объектов для отображения
         public int[] NPage { get; set; } = new int[countitems];// массив с номерами отображаемых страниц    
         public string[] Visible { get; set; } = new string[countitems];//массив свойст, отвечающий за видимость номера страницы, Visible - видимый, Hidden - скрытый
@@ -103,6 +103,9 @@ namespace WPF_SQL
                 PropertyChanged(this, new PropertyChangedEventArgs("Bold"));
             }
         }
+
+
+
         public PageChange() // контруктор
         {
             for (int i = 0; i < countitems; i++)  // показываем исходное меню ( 1 2 3 4 5)
